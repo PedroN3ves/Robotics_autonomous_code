@@ -166,10 +166,7 @@ public class right extends LinearOpMode {
 
     telemetry.setMsTransmissionInterval(50);
 
-    /*
-     * The INIT-loop:
-     * This REPLACES waitForStart!
-     */
+    
     while (!isStarted() && !isStopRequested()) {
       ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
 
@@ -225,14 +222,11 @@ public class right extends LinearOpMode {
       telemetry.update();
     }
 
-    // Loop de inicalização
     while (opModeIsActive()) {
       leds.setPower(0.5);
-      /* Actually do something useful */
       distanceSensor = (DistanceSensor) sensor_cor;
       distanceInCentimeters = distanceSensor.getDistance(DistanceUnit.CM);
       if (tagOfInterest == null) {
-        //default trajectory here if preferred
       } else if (tagOfInterest.id == LEFT) {
         run(2000, -1700);
       } else if (tagOfInterest.id == MIDDLE) {
